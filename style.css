@@ -1,3 +1,4 @@
+/* VARIABLES */
 :root {
     /* COLLORES */
     --background : #151618;
@@ -19,24 +20,6 @@ body {
     flex-direction: column;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0px;
-    display: flex;
-}
-
-nav ul li {
-    background-color: var(--simple-box);
-    border-radius: 10px;
-    text-align: center;
-    margin-left: 0px;
-    transition: all 0.1s ease-in-out;
-}
-
-nav ul li:hover {
-    transform: scale(1.05);
-    font-weight: bold;
-}
 
 footer {
     text-align: center;
@@ -48,9 +31,44 @@ footer a {
     color: var(--gray);
     text-decoration: none;
     font-family: var(--monospace);
-    width: 100%;
 }
 
 h1 {
+    text-align: center;
+}
+
+a {
+    color: cyan;
+    text-decoration: none;
+}
+
+
+/* IDS */
+
+#MainMenu {
+    list-style: none;
+    padding: 0px;
+    display: flex;
+}
+
+#MainMenu li {
+    background-color: var(--simple-box);
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.1s ease-in-out;
+}
+
+#MainMenu li:hover {
+    transform: scale(1.05);
+    font-weight: bold;
+}
+
+#MainMenu a {
+    color: white;
+    text-decoration: none;
+}
+
+#Return {
+    margin-bottom: 25px;
     text-align: center;
 }

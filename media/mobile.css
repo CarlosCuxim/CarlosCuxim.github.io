@@ -1,11 +1,11 @@
-nav ul {
+#MainMenu {
     flex-direction: column;
     margin-left: 20px;
     margin-right: 20px;
     gap: 10px;
 }
 
-nav ul li {
+#MainMenu li {
     padding: 10px;
 }
 
