@@ -1,6 +1,40 @@
 :root {
-    --main-dark-color : #112d4e;
-    --main-blue-color : #3f72af;
-    --main-gray-color : #dbe2ef;
-    --main-white-color: #f9f7f7
+    --background : #151618;
+    --simple-box : #25282c;
+    --sans-serif : 'Roboto', sans-serif;
   }
+
+
+body {
+    background-color: var(--background);
+    color: white;
+    font-family: var(--sans-serif);
+}
+
+header {
+    width: 75%;
+    min-width: 600px;
+    margin: auto;
+    background-color: var(--simple-box);
+}
+
+nav {
+    width: 75%;
+    min-width: 600px;
+    margin: auto;
+    background-color: var(--simple-box);
+}
+
+main {
+    width: 75%;
+    min-width: 600px;
+    margin: auto;
+    background-color: var(--simple-box);
+}
+
+footer {
+    width: 75%;
+    min-width: 600px;
+    margin: auto;
+    background-color: var(--simple-box);
+}
