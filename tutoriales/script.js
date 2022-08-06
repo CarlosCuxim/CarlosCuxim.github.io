@@ -25,9 +25,11 @@ function addToMain(text) {
     Main.innerHTML = text
     MathJax.typesetPromise()
 
-    document.querySelectorAll('code').forEach((el) => {
-        hljs.highlightElement(el);
-      });
+    document.querySelectorAll('code').forEach(
+        (el) => {
+            hljs.highlightElement(el);
+        }
+    );
 }
 
 readFile(fileDir, addToMain)
