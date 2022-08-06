@@ -1,0 +1,14 @@
+qx-entry-data {
+    font-family: var(--serif);
+    font-style: italic;
+}
+
+qx-entry-data::before {
+    content: "⟨";
+    font-style: normal;
+}
+
+qx-entry-data::after {
+    content: "⟩";
+    font-style: normal;
+}

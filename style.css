@@ -6,7 +6,8 @@
     --gray       : #a9abb3;
     /* FUENTES */
     --sans-serif : 'Roboto', sans-serif;
-    --monospace  : 'Roboto mono', monospace;
+    --serif      : 'Roboto Serif', serif;
+    --monospace  : 'Roboto Mono', monospace;
   }
 
 
@@ -51,6 +52,10 @@ h1 {
 a {
     color: cyan;
     text-decoration: none;
+}
+
+code {
+    font-family: var(--monospace);
 }
 
 
