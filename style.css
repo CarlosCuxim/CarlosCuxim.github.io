@@ -83,3 +83,7 @@ a {
     margin-bottom: 25px;
     text-align: center;
 }
+
+#MainContainer {
+    text-align: justify;
+}
