@@ -20,6 +20,17 @@ body {
     flex-direction: column;
 }
 
+main {
+    width: 90%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main p {
+    text-align: justify;
+}
+
 
 footer {
     text-align: center;
