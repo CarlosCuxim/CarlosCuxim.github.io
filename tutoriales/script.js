@@ -2,7 +2,7 @@ let fileName = location.search.substring(1)
 
 let Main = document.getElementById("MainContainer")
 
-let fileDir = "./" + fileName + ".md"
+let fileDir = "./" + fileName + ".html"
 
 
 

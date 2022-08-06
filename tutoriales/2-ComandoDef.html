@@ -1,0 +1,193 @@
+<h1>El comando \def</h1>
+
+<p>
+    Ya vimos que en $\rm\LaTeX$ se puede crear nuevos comandos
+    usando
+    <code>\newcommand</code>,
+    aunque esta es la forma nativa de existe otra forma de
+    crear macros usando un comando heredado de $\rm\TeX$. Esto
+    es posible usando el comando
+    <code class="latex">\def</code>.
+    Este comando tiene la siguiente estructura:
+  </p>
+  
+  
+  <pre class="code-big-display">
+  <code><span class="command-tex">\def</span><span class="entry-data"><i>expresión</i></span>{<span class="entry-data"><i>expansión</i></span>}
+  </code></pre>
+  
+  
+  <p>
+    La sintaxis es muy similar a
+    <code>\newcommand</code>, la única
+    diferencia como tal es en
+    <span class="entry-data"><i>expresión</i></span>.
+    En
+    <code>\newcommand</code> esta
+    parte estaba restringida a un comando de la forma
+    <code class="latex">\comando</code>
+    y la cantidad de parámetros se especifica en parámetros
+    opcionales, pero en
+    <code class="latex">\def</code>
+    la situación cambia, ya que en
+    <span class="entry-data"><i>expresión</i></span>
+    hay que especificar explícitamente a los parámetros y cómo
+    se delimitarán.
+  </p>
+  
+  <p>
+    Consideremos para ello el siguiente ejemplo. Supongamos que
+    se quiere hacer un macro llamado
+    <code class="latex">\angparen</code> que coloque en
+    paréntesis angulares (es decir “⟨” y “⟩”) a una coordenada
+    dada. Con
+    <code>\newcommand</code>
+    esto sería algo como:
+  </p>
+  
+  <pre class="code-display">
+  <code>\newcommand{\angparen}[1]{\langle#1\rangle}
+  </code></pre>
+  
+  <p>
+    Como ya sabemos esto hace que
+    <code class="latex">$\angparen{1,2}$</code>
+    se expanda como $\langle1,2\rangle$, aunque esto puede ser
+    suficiente, tal vez a algunos les gustaría que los
+    delimitadores se parezcan a los de la expansión, es decir
+    que en vez de escribir
+    <code class="latex">\angparen{1,2}</code>
+    se escribiera
+    <code class="latex">\angparen&lt;1,2&gt;</code>.
+    Aunque con
+    <code>\newcommand</code> esto no es
+    posible, si lo es usando
+    <code class="latex">\def</code>, el comando sería el
+    siguiente:
+  </p>
+  
+  <pre class="code-display">
+  <code class="latex">\def\angparen&lt;#1&gt;{\langle#1\rangle}
+  </code></pre>
+  
+  <p>
+    Notemos que aquí
+    <span class="entry-data"><i>expresión</i></span> es
+    <code class="latex">\angparen&lt;#1&gt;</code>,
+    este le dice a LaTeX que el comando
+    <code class="latex">\angparen</code> va a tomar como
+    entrada un parámetro, el cual será todo lo que este entre
+    los caracteres
+    “<code class="latex">&lt;</code>” y
+    “<code class="latex">&gt;</code>”.
+  </p>
+  
+  <table class="table-code">
+    <thead>
+      <tr>
+        <th colspan="2">Ejemplo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+  <code class="latex">Sea $\angparen&lt;1,2&gt;$ un vector en $\mathbb{R}^2\$.
+  </code>
+        </td>
+        <td class="example-tex">
+          Sea $\langle1,2\rangle$ un vector en $\mathbb{R}^2$.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <p>
+    Esta es la mayor ventaja de
+    <code class="latex">\def</code>,
+    que la sintaxis de entrada de los comandos no es fija, sino
+    que es posible variarla bastante. Tomemos por ejemplo el
+    siguiente comando:
+  </p>
+  
+  <pre class="code-display">
+  <code class="latex">\def\Teorema#1(#2).&nbsp;#3\par.{\textbf{Teorema #1} (#2). \textit{#3}\par\bigskip}
+  </code></pre>
+  
+  <p>
+    Este comando toma como entrada tres parámetros, el primer
+    parámetro será todo lo que se encuentre después de la
+    declaración del comando hasta el primer
+    “<code>(</code>” luego tenemos que el
+    segundo parámetro, será todo lo que esté delimitado por 
+    “<code>(</code>” y la secuencia exacta
+    de caracteres “<code>).&nbsp;</code>”.
+    Notemos que esto también incluye al punto y el espacio, ya
+    que en el caso de que no se encuentre la secuencia de
+    caracteres escrita exactamente igual, es decir, que el punto
+    o el espacio no se encuentren o haya un espacio entre el
+    paréntesis y el punto como en 
+    “<code class="latex">\Teorema 1 (a)&nbsp;Este es el teorema 1</code>”,
+    “<code class="latex">\Teorema 1 (a).Este es el teorema 1</code>” o 
+    “<code class="latex">\Teorema 1 (a)&nbsp;.&nbsp;Este es el teorema 1</code>”
+    este ignorará a los
+    “<code>)&nbsp;</code>”,
+    “<code>).</code>” o
+    “<code>)&nbsp;.&nbsp;</code>” y
+    tratará de buscar al
+    “<code>).&nbsp;</code>” hasta antes del
+    siguiente salto de línea, en el caso que no lo encuentre
+    este arrojará un error. Por eso es muy importante tener
+    cuidado con la sintaxis dada en
+    <span class="entry-data"><i>expresión</i></span> 
+    y cumplirla al pie de la letra. Por último, tenemos
+    que el tercer parámetro sea todo lo que se encuentre
+    desde el
+    “<code>).&nbsp;</code>”
+    hasta el primer
+    <code class="latex">\par</code>, este comando es
+    usado en cada salto de línea por lo que podemos entenderlo
+    como que es todo lo que se encuentre después del
+    “<code>).&nbsp;</code>” hasta antes de
+    un salto de línea. A continuación mostraremos lo que
+    resulta de aplicar el comando.
+  </p>
+  
+  <table class="table-code">
+    <thead>
+      <tr>
+        <th colspan="2">Ejemplo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="codigo-text">
+  <code class="latex">\Teorema 5.5 (Pitágoras).&nbsp;En todo triangulo rectángulo $a^2 + b^2 = c^2$.
+  
+  El teorema anterior es el famoso teorema de Pitágoras.
+  </code>
+        </td>
+        <td class="example-tex">
+          <b>Teorema 5.5</b> (Pitágoras). <i>En todo triangulo
+          rectángulo $a^2 + b^2 = c^2$.</i>
+          <br/><br/>
+          El teorema anterior es el famoso teorema de Pitágoras.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <p>
+    Ahora para concluir, aunque
+    <code class="latex">\def</code> es bastante útil para
+    definir notaciones no tradicionales de comandos, este tiene
+    dos desventajas con respecto a
+    <code>\newcommand</code>. La primera es
+    que no permite parámetros opcionales y segundo es que es
+    posible reescribir comandos ya existentes a diferencia de
+    <code>\newcommand</code> que primero
+    comprueba si el comando existe. De este modo lo más
+    recomendable es no usar
+    <code class="latex">\def</code> a menos que
+    sea extremadamente necesario y estemos seguros que el
+    nombre del comando no existe aun.
+  </p>
