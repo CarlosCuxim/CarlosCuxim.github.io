@@ -23,13 +23,11 @@ function readFile(fileDir, callback){
 
 function addToMain(text) {
     Main.innerHTML = text
-    MathJax.typesetPromise()
 
-    document.querySelectorAll('code').forEach(
-        (el) => {
-            hljs.highlightElement(el);
-        }
-    );
+    // Cambia el código latex a fórmulas
+    MathJax.typesetPromise()
+    // Agrega el resaltado a los códigos
+    hljs.highlightAll()
 }
 
 readFile(fileDir, addToMain)

@@ -4,4 +4,4 @@ MathJax = {
     }
   };
 
-console.log("CONFIGURACIONES CARGADAS :)")
+console.log("CONFIGURACIONES DE MATHJAX CARGADAS :)")
