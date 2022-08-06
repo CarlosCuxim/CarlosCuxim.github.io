@@ -1,7 +1,28 @@
-var S = location.search.substring(1)
+let fileName = location.search.substring(1)
 
-var Ob = document.getElementById("temporal")
+let Main = document.getElementById("MainContainer")
 
-Ob.data = S + ".md"
+let fileDir = "./" + fileName + ".md"
 
-console.log(Ob)
+
+
+// Esta función lee un archivo dada una dirección.
+function readFile(fileDir, callback){
+    // Crea un objeto para hacer la petición
+    let req = new XMLHttpRequest()
+    // Se realiza la petición
+    req.open('GET', fileDir)
+    req.send()
+
+    req.onload = () => {
+        callback(req.responseText)
+    }
+
+    //return req.responseText
+}
+
+function addToMain(text) {
+    Main.innerHTML = text
+}
+
+readFile(fileDir, addToMain)
