@@ -23,6 +23,7 @@ function readFile(fileDir, callback){
 
 function addToMain(text) {
     Main.innerHTML = text
+    MathJax.typesetPromise()
 }
 
 readFile(fileDir, addToMain)
