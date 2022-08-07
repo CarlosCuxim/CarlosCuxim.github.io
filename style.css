@@ -54,6 +54,10 @@ a {
     text-decoration: none;
 }
 
+pre {
+    overflow-x: auto;
+}
+
 code {
     font-family: var(--monospace);
 }
