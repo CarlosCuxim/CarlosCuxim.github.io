@@ -1,6 +1,5 @@
 hljs.configure({
-    cssSelector: 'code',
-    languages: ["latex"],
+    cssSelector: 'code'
 });
 
 console.log("CONFIGURACIONES DE HIGHLIGHTJS CARGADAS :)")
