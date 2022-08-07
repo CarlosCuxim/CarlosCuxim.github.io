@@ -1,80 +1,77 @@
 <h1>Creación de nuevos comandos en $\rm\LaTeX$</h1>
-  
+
 <p>
     En algunas ocasiones se requiere reutilizar una misma pieza
     de código en un documento y aunque en $\rm\LaTeX$ es
     relativamente fácil conservar el formato original solo
     copiando y pegando el código a mano, esto puede inducir
     muchas equivocaciones.
-  </p>
-  
-  <p>
+</p>
+
+<p>
     Por ejemplo, supongamos que en nuestro documento necesitamos
     utilizar bastantes veces una matriz simétrica de
     $2 \times 2$, aunque el código es relativamente corto, si
     se necesita muchas veces lo mejor es crear un comando tal
     que cree automáticamente el código deseado.
-  </p>
-  
-  <p>
+</p>
+
+<p>
     En $\rm\LaTeX$ hay diversas formas de crear comandos, aquí
     mencionaré únicamente el más básico:
     <code>\newcommand</code>.
     Este comando tiene la siguiente estructura:
-  </p>
-  
-  
-<pre><code class="language-latex"><!--
--->\newcommand{<qx-entry-data>nombre</qx-entry-data>}[<qx-entry-data>núm. de entradas</qx-entry-data>][<qx-entry-data><i>valor default</i></qx-entry-data>]{<qx-entry-data>expansión</qx-entry-data>}
+</p>
+
+<pre><code><!--
+-->\newcommand{nombre}[núm. de entradas][valor default]{expansión}
 </code></pre>
-  
-  
-  <p>
+
+<p>
     Para entender su funcionamiento consideremos el siguiente
     ejemplo. Supongamos que debemos crear un comando que genere
     un conjunto de $n$ vectores de la forma
     $\{\mathbf{x}_1, \ldots, \mathbf{x}_n \}$.
     Para esto podemos crear un comando llamado
-    <code class="language-latex">\vectores</code>
+    <code>\vectores</code>
     que cree automáticamente la ecuación, para ello debemos
     escribir en algún lugar del documento (usualmente en el
     preámbulo) el siguiente comando:
-  </p>
-  
-  <pre class="code-display">
-  <code>\newcommand{\vectores}{\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}}
-  </code></pre>
-  
-  <p>
+</p>
+
+<pre class="code-display"><code><!--
+-->\newcommand{\vectores}{\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}}
+</code></pre>
+
+<p>
     El funcionamiento del comando es simple, este le dice a
     $\rm\LaTeX$ que cuando se use el comando
-    <code class="language-latex">\vectores</code>
+    <code>\vectores</code>
     este se sustituirá exactamente como
     <code>\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}</code>.
-  </p>
-  
-  <table class="table-code">
+</p>
+
+<table class="table-code">
     <thead>
         <tr>
-          <th colspan="2">Ejemplo.</th>
+            <th colspan="2">Ejemplo.</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-          <td>
-  <code class="language-latex">Sea $\vectores$ un conjunto de vectores de $\mathbb{R}^n$.
-  </code>
-          </td>
-          <td class="example-tex">
-            Sea $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$ un
-            conjunto de vectores de $\mathbb{R}^n$.
-          </td>
+            <td>
+                <code>Sea $\vectores$ un conjunto de vectores de $\mathbb{R}^n$.</code>
+            </td>
+            <td class="example-tex">
+                Sea $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$ un
+                conjunto de vectores de $\mathbb{R}^n$.
+            </td>
         </tr>
     </tbody>
-  </table>
-  
-  
-  <p>
+</table>
+
+
+<p>
     Ahora, supongamos que deseamos modificar la variable de los
     vectores, es decir que en vez de $\mathbf{x}$ sea
     $\mathbf{y}$ o $\mathbf{z}$, no necesitamos crear un comando
@@ -83,50 +80,48 @@
     al 9 en
     <span class="entry-data"><i>núm. de entradas</i></span>,
     cada una de las entradas será accesible mediante el
-    <code class="language-latex">#</code>,
+    <code>#</code>,
     por ejemplo, si necesitamos la información en la entrada 1
     usamos
-    <code class="language-latex">#1</code>,
-    <code class="language-latex">#2</code>
+    <code>#1</code>,
+    <code>#2</code>
     para la entrada 2 y así consecutivamente. En nuestro caso el
     código necesario sería:
-  </p>
-  
-  <pre class="code-display">
-  <code class="language-latex">\newcommand{\vectores}[1]{\{\mathbf{#1}_1, \ldots, \mathbf{#1}_n\}}
-  </code></pre>
-  
-  <p style="text-align: justify;">
+</p>
+
+<pre class="code-display"><code><!--
+-->\newcommand{\vectores}[1]{\{\mathbf{#1}_1, \ldots, \mathbf{#1}_n\}}
+</code></pre>
+
+<p>
     De esta forma si usamos
-    <code class="language-latex">\vectores{x}</code>
+    <code>\vectores{x}</code>
     este se expandirá en $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$
     pero con
-    <code class="language-latex">\vectores{y}</code>
+    <code>\vectores{y}</code>
     este se expandirá en $\{\mathbf{y}_1, \ldots, \mathbf{y}_n\}$.
-  </p>
-  
-  <table class="table-code">
+</p>
+
+<table class="table-code">
     <thead>
         <tr>
-          <th colspan="2">Ejemplo.</th>
+            <th colspan="2">Ejemplo.</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-          <td>
-  <code class="language-latex">Con x: $\vectores{x}$.
-  Con y: $\vectores{y}$.
-  </code>
-          </td>
-          <td class="example-tex">
-            Con x: $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.
-            Con y: $\{\mathbf{y}_1, \ldots, \mathbf{y}_n\}$.
-          </td>
+            <td>
+                <code>Con x: $\vectores{x}$. Con y: $\vectores{y}$.</code>
+            </td>
+            <td class="example-tex">
+                Con x: $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.
+                Con y: $\{\mathbf{y}_1, \ldots, \mathbf{y}_n\}$.
+            </td>
         </tr>
     </tbody>
-  </table>
-  
-  <p>
+</table>
+
+<p>
     Ahora, supongamos que el tamaño del conjunto no siempre es
     del mismo tamaño, sino que a veces necesitamos de 10
     vectores o 15, pero en raras ocasiones. Es posible también
@@ -139,58 +134,55 @@
     el parámetro opcional siempre será el primero, y se colocará
     entre corchetes. Por ejemplo, consideremos el siguiente 
     código:
-  </p>
-  
-  <pre class="code-display">
-  <code class="language-latex">\newcommand{\vectores}[2][n]{\{\mathbf{#2}_{#1}, \ldots, \mathbf{#2}_{#1}\}}
-  </code></pre>
-  
-  <p>
+</p>
+
+<pre class="code-display"><code><!--
+-->\newcommand{\vectores}[2][n]{\{\mathbf{#2}_{#1}, \ldots, \mathbf{#2}_{#1}\}}
+</code></pre>
+
+<p>
     Para poder usar el comando podemos usar
-    <code class="language-latex">\vectores{x}</code>
+    <code>\vectores{x}</code>
     y se usará como primer parámetro
     <code>n</code>,
     pero con
-    <code class="language-latex">\vectores[5]{z}</code>
+    <code>\vectores[5]{z}</code>
     se usará como primer parámetro el número
     <code>5</code>.
-  </p>
-  
-  <table class="table-code">
+</p>
+
+<table class="table-code">
     <thead>
         <tr>
-          <th colspan="2">Ejemplo.</th>
+            <th colspan="2">Ejemplo.</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-          <td>
-  <code class="language-latex">Con x y el valor default: $\vectores{x}$.
-  
-  Con z y el primer parámetro 5: $\vectores[5]{z}$.
-  </code>
-          </td>
-          <td class="example-tex">
-            Con x y el valor default:
-            $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.<br/>
-            Con z y el primer parámetro 5:
-            $\{\mathbf{z}_1, \ldots, \mathbf{z}_5\}$.
-          </td>
+            <td>
+                <code>Con x y el valor default: $\vectores{x}$. Con z y el primer parámetro 5: $\vectores[5]{z}$.</code>
+            </td>
+            <td class="example-tex">
+                Con x y el valor default:
+                $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.
+                Con z y el primer parámetro 5:
+                $\{\mathbf{z}_1, \ldots, \mathbf{z}_5\}$.
+            </td>
         </tr>
     </tbody>
-  </table>
-  
-  <p>
+</table>
+
+<p>
     Para concluir solo quiero mencionar que los comandos de
     $\rm\LaTeX$ son bastante útiles si se saben usar
     correctamente, un ejemplo de su uso es para definir formas
     más cortas de comandos largos como
-    <code class="language-latex">\R</code>
+    <code>\R</code>
     para
-    <code class="language-latex">\mathbb{R}</code>
+    <code>\mathbb{R}</code>
     o
-    <code class="language-latex">\diff</code>
+    <code>\diff</code>
     para
     <code>\frac{d}{dx}</code>,
     lo cual permite que el código sea más legible y sencillo.
-  </p>
+</p>
