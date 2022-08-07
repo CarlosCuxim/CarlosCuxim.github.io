@@ -2,7 +2,8 @@ pre code.hljs{
     background: var(--simple-box);
     display: block;
     overflow-x: auto;
-    padding: 1em
+    padding: 1em;
+    border-radius: 5px;
 }
 
 .hljs-keyword,.hljs-literal,.hljs-name,.hljs-selector-tag,.hljs-strong,.hljs-tag{

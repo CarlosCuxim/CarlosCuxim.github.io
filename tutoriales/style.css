@@ -1,0 +1,14 @@
+qx-code-table {
+    display: flex;
+    flex-direction: column;
+}
+
+qx-code-table .code-table-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+qx-code-table .code-table-render {
+    padding: 1em;
+    border: 1px solid white;
+}

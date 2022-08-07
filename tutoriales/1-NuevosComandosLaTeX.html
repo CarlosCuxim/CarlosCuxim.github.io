@@ -33,43 +33,36 @@
     un conjunto de $n$ vectores de la forma
     $\{\mathbf{x}_1, \ldots, \mathbf{x}_n \}$.
     Para esto podemos crear un comando llamado
-    <code>\vectores</code>
+    <code class="latex">\vectores</code>
     que cree automáticamente la ecuación, para ello debemos
     escribir en algún lugar del documento (usualmente en el
     preámbulo) el siguiente comando:
 </p>
 
-<pre class="code-display"><code><!--
+<pre><code><!--
 -->\newcommand{\vectores}{\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}}
 </code></pre>
 
 <p>
     El funcionamiento del comando es simple, este le dice a
     $\rm\LaTeX$ que cuando se use el comando
-    <code>\vectores</code>
+    <code class="latex">\vectores</code>
     este se sustituirá exactamente como
-    <code>\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}</code>.
+    <code>\{ \mathbf{x}_1, \ldots, \mathbf{x}_n \}</code>.
 </p>
 
-<table class="table-code">
-    <thead>
-        <tr>
-            <th colspan="2">Ejemplo.</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <code>Sea $\vectores$ un conjunto de vectores de $\mathbb{R}^n$.</code>
-            </td>
-            <td class="example-tex">
-                Sea $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$ un
-                conjunto de vectores de $\mathbb{R}^n$.
-            </td>
-        </tr>
-    </tbody>
-</table>
-
+<qx-code-table>
+    <div class="code-table-title">
+        Ejemplo.
+    </div>
+    <pre><code class="latex"><!--
+-->Sea $\vectores$ un conjunto de vectores de $\mathbb{R}^n$.
+</code></pre>
+    <div class="code-table-render">
+        Sea $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$ un
+        conjunto de vectores de $\mathbb{R}^n$.
+    </div>
+</qx-code-table>
 
 <p>
     Ahora, supongamos que deseamos modificar la variable de los
@@ -78,7 +71,7 @@
     para cada uno, sino que podemos hacer que nuestro comando
     tome una entrada. Para esto hay que colocar un número del 1
     al 9 en
-    <span class="entry-data"><i>núm. de entradas</i></span>,
+    <code>núm. de entradas</code>,
     cada una de las entradas será accesible mediante el
     <code>#</code>,
     por ejemplo, si necesitamos la información en la entrada 1
@@ -89,7 +82,7 @@
     código necesario sería:
 </p>
 
-<pre class="code-display"><code><!--
+<pre><code><!--
 -->\newcommand{\vectores}[1]{\{\mathbf{#1}_1, \ldots, \mathbf{#1}_n\}}
 </code></pre>
 
@@ -102,23 +95,18 @@
     este se expandirá en $\{\mathbf{y}_1, \ldots, \mathbf{y}_n\}$.
 </p>
 
-<table class="table-code">
-    <thead>
-        <tr>
-            <th colspan="2">Ejemplo.</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <code>Con x: $\vectores{x}$. Con y: $\vectores{y}$.</code>
-            </td>
-            <td class="example-tex">
-                Con x: $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.
-                Con y: $\{\mathbf{y}_1, \ldots, \mathbf{y}_n\}$.
-            </td>
-        </tr>
-    </tbody>
+<qx-code-table>
+    <div class="code-table-title">
+        Ejemplo.
+    </div>
+    <pre><code class="latex"><!--
+-->Con x: $\vectores{x}$.
+Con y: $\vectores{y}$.
+</code></pre>
+    <div class="code-table-render">
+        Con x: $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.
+        Con y: $\{\mathbf{y}_1, \ldots, \mathbf{y}_n\}$.
+    </div>
 </table>
 
 <p>
@@ -128,7 +116,7 @@
     especificar un parámetro por defecto, es decir, un valor que
     siempre se use a menos que se especifique lo contrario, para
     ello en
-    <span class="entry-data"><i>valor default</i></span>
+    <code>valor default</code>
     hay que colocar que valor será usado a menos que se
     especifique lo contrario. Al momento de escribir el comando
     el parámetro opcional siempre será el primero, y se colocará
@@ -136,52 +124,47 @@
     código:
 </p>
 
-<pre class="code-display"><code><!--
+<pre><code><!--
 -->\newcommand{\vectores}[2][n]{\{\mathbf{#2}_{#1}, \ldots, \mathbf{#2}_{#1}\}}
 </code></pre>
 
 <p>
     Para poder usar el comando podemos usar
-    <code>\vectores{x}</code>
+    <code class="latex">\vectores{x}</code>
     y se usará como primer parámetro
     <code>n</code>,
     pero con
-    <code>\vectores[5]{z}</code>
+    <code class="latex">\vectores[5]{z}</code>
     se usará como primer parámetro el número
     <code>5</code>.
 </p>
 
-<table class="table-code">
-    <thead>
-        <tr>
-            <th colspan="2">Ejemplo.</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <code>Con x y el valor default: $\vectores{x}$. Con z y el primer parámetro 5: $\vectores[5]{z}$.</code>
-            </td>
-            <td class="example-tex">
-                Con x y el valor default:
-                $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.
-                Con z y el primer parámetro 5:
-                $\{\mathbf{z}_1, \ldots, \mathbf{z}_5\}$.
-            </td>
-        </tr>
-    </tbody>
-</table>
+<qx-code-table>
+    <div class="code-table-title">
+        Ejemplo.
+    </div>
+    <pre><code class="latex"><!--
+-->Con x y el valor default: $\vectores{x}$.
+Con z y el primer parámetro 5: $\vectores[5]{z}$.
+</code></pre>
+    <div class="code-table-render">
+        Con x y el valor default:
+        $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$.
+        Con z y el primer parámetro 5:
+        $\{\mathbf{z}_1, \ldots, \mathbf{z}_5\}$.
+    </div>
+</qx-code-table>
 
 <p>
     Para concluir solo quiero mencionar que los comandos de
     $\rm\LaTeX$ son bastante útiles si se saben usar
     correctamente, un ejemplo de su uso es para definir formas
     más cortas de comandos largos como
-    <code>\R</code>
+    <code class="latex">\R</code>
     para
-    <code>\mathbb{R}</code>
+    <code class="latex">\mathbb{R}</code>
     o
-    <code>\diff</code>
+    <code class="latex">\diff</code>
     para
     <code>\frac{d}{dx}</code>,
     lo cual permite que el código sea más legible y sencillo.
