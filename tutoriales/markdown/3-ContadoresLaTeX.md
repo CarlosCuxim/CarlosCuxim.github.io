@@ -48,32 +48,28 @@ poder modificar su valor numérico. Los comandos más básicos
 son:
 
 
-<ul>
-    <li>
-        `\setcounter{nombre del contador}{número entero}`
-    </li>
-    <p>
-        Este comando cambia el valor actual del contador `nombre del contador` y le asigna el valor `número entero`. Aunque `número entero` puede ser negativo, por limitaciones de los contadores el valor de `nombre del contador` no puede ser mayor a $2^{31}-1$ ni menor a $1-2^{31}$. Además, si un contador está subordinado por `nombre del contador` este comando no reiniciará el contador subordinado.
-    </p>
-    <li>
-        `\addtocounter{nombre del contador}{número entero}`
-    </li>
-    <p>
-        Este comando permite sumar el valor `número entero` al valor actual del contador `nombre del contador`. De igual forma `número entero` puede ser negativo, pero la suma no puede ser mayor a $2^{31}-1$ o menor a $1 - 2^{31}$. Este comando tampoco reinicia los contadores subordinados.
-    </p>
-    <li>
-        `\stepcounter{nombre del contador}`
-    </li>
+<qx-list>
+- `\setcounter{nombre del contador}{número entero}`
+
+Este comando cambia el valor actual del contador `nombre del contador` y le asigna el valor `número entero`. Aunque `número entero` puede ser negativo, por limitaciones de los contadores el valor de `nombre del contador` no puede ser mayor a $2^{31}-1$ ni menor a $1-2^{31}$. Además, si un contador está subordinado por `nombre del contador` este comando no reiniciará el contador subordinado.
+
+
+- `\addtocounter{nombre del contador}{número entero}`
+
+Este comando permite sumar el valor `número entero` al valor actual del contador `nombre del contador`. De igual forma `número entero` puede ser negativo, pero la suma no puede ser mayor a $2^{31}-1$ o menor a $1 - 2^{31}$. Este comando tampoco reinicia los contadores subordinados.
+
+
+- `\stepcounter{nombre del contador}`
+
     <p>
         Este comando incrementa en uno el valor del contador `nombre del contador`. Este comando si reinicia los contadores subordinados.
     </p>
-    <li>
-        `\refstepcounter{nombre del contador}`
-    </li>
-    <p>
-        Este comando realiza exactamente lo mismo que el anterior. La única diferencia es permite guardar el valor de `nombre del contador` para que sea usado con `\label` y `\ref`.
-    </p>
-</ul>
+
+
+- `\refstepcounter{nombre del contador}`
+
+Este comando realiza exactamente lo mismo que el anterior. La única diferencia es permite guardar el valor de `nombre del contador` para que sea usado con `\label` y `\ref`.
+</qx-list>
 
 <qx-example-table>
 \newcounter{A}
@@ -160,50 +156,41 @@ son representados. De este modo es posible hacer que el
 valor del contador se exprese en letras, números romanos o
 símbolos. Esto es posible usando los siguientes comandos:
 
-<ul>
-    <li>
-        `\arabic{nombre del contador}`
-    </li>
-    <p>
-        Escribe el valor del contador `nombre del contador` con números arábigos, es decir: 1, 2, 3...
-    </p>
-    <li>
-        `\value{nombre del contador}`
-    </li>
-    <p>
-        Escribe el valor del contador `nombre del contador` como valor entero. Sirve para comandos que requieran un número entero como entrada, como en `\addtocounter`.
-    </p>
-    <li>
-        `\alph{nombre del contador}`
-    </li>
-    <p>
-        Escribe el valor del contador `nombre del contador` con letras minúsculas, es decir: a, b, c... El valor del contador debe estar entre 1 y 27.
-    </p>
-    <li>
-        `\Alph{nombre del contador}`
-    </li>
-    <p>
-        Escribe el valor del contador `nombre del contador` con letras mayúsculas, es decir: A, B, C... El valor del contador debe estar entre 1 y 27.
-    </p>
-    <li>
-        `\roman{nombre del contador}`
-    </li>
-    <p>
-        Escribe el valor del contador `nombre del contador` con números romanos en minúsculas, es decir: i, ii, iii... En el caso que el paquete `babel` sea cargado con la opción `spanish` entonces los números romanos estarán en versalitas, es decir: <span style="font-variant: small-caps;">i, ii, iii...</span>
-    </p>
-    <li>
-        `\Roman{nombre del contador}`
-    </li>
-    <p>
-        Escribe el valor del contador `nombre del contador` con números romanos en mayúsculas, es decir: I, II, III...
-    </p>
-    <li>
-        `\fnsymbol{nombre del contador}`
-    </li>
-    <p>
-        Escribe el valor del contador `nombre del contador` con símbolos, es decir: *, †, ‡... El valor deberá estar entre 1 y 9. En el caso que el paquete `babel` sea cargado con la opción `spanish` entonces los símbolos serán remplazados con asteriscos, es decir: *, **, ***... El valor deberá estar entre 1  y 6.
-    </p>
-</ul>
+<qx-list>
+- `\arabic{nombre del contador}`
+
+Escribe el valor del contador `nombre del contador` con números arábigos, es decir: 1, 2, 3...
+
+
+- `\value{nombre del contador}`
+
+Escribe el valor del contador `nombre del contador` como valor entero. Sirve para comandos que requieran un número entero como entrada, como en `\addtocounter`.
+
+
+- `\alph{nombre del contador}`
+
+Escribe el valor del contador `nombre del contador` con letras minúsculas, es decir: a, b, c... El valor del contador debe estar entre 1 y 27.
+
+
+- `\Alph{nombre del contador}`
+
+Escribe el valor del contador `nombre del contador` con letras mayúsculas, es decir: A, B, C... El valor del contador debe estar entre 1 y 27.
+
+
+- `\roman{nombre del contador}`
+
+Escribe el valor del contador `nombre del contador` con números romanos en minúsculas, es decir: i, ii, iii... En el caso que el paquete `babel` sea cargado con la opción `spanish` entonces los números romanos estarán en versalitas, es decir: <span style="font-variant: small-caps;">i, ii, iii...</span>
+
+
+- `\Roman{nombre del contador}`
+
+Escribe el valor del contador `nombre del contador` con números romanos en mayúsculas, es decir: I, II, III...
+
+
+- `\fnsymbol{nombre del contador}`
+
+Escribe el valor del contador `nombre del contador` con símbolos, es decir: *, †, ‡... El valor deberá estar entre 1 y 9. En el caso que el paquete `babel` sea cargado con la opción `spanish` entonces los símbolos serán remplazados con asteriscos, es decir: *, **, ***... El valor deberá estar entre 1  y 6.
+</qx-list>
 
 <qx-example-table>
 \newcounter{A}

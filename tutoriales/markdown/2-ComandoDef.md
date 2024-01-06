@@ -62,7 +62,7 @@ El teorema anterior es el famoso teorema de Pitágoras.
     <b>Teorema 5.5</b> (Pitágoras). <i>En todo triangulo rectángulo $a^2 + b^2 = c^2$.</i>
     <br/><br/>
     El teorema anterior es el famoso teorema de Pitágoras.
-<qx-example-table>
+</qx-example-table>
   
 
 Ahora para concluir, aunque `\def` es bastante útil para definir notaciones no tradicionales de comandos, este tiene dos desventajas con respecto a `\newcommand`. La primera es que no permite parámetros opcionales y segundo es que es posible reescribir comandos ya existentes a diferencia de `\newcommand` que primero comprueba si el comando existe. De este modo lo más recomendable es no usar `\def` a menos que sea extremadamente necesario y estemos seguros que el nombre del comando no existe aun.

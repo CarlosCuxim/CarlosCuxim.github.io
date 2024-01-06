@@ -10,7 +10,7 @@ En $\rm\LaTeX$ hay diversas formas de crear comandos, aquí mencionaré únicame
 
 <qx-ds-code>
 \newcommand{nombre}[núm. de entradas][valor default]{expansión}
-<qx-ds-code>
+</qx-ds-code>
 
 Para entender su funcionamiento consideremos el siguiente ejemplo. Supongamos que debemos crear un comando que genere un conjunto de $n$ vectores de la forma $\{\mathbf{x}_1, \ldots, \mathbf{x}_n \}$. Para esto podemos crear un comando llamado `\vectores` que cree automáticamente la ecuación, para ello debemos escribir en algún lugar del documento (usualmente en el preámbulo) el siguiente comando:
 
