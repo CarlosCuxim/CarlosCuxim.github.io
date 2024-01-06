@@ -1,0 +1,68 @@
+# El comando `\def`
+
+
+Ya vimos que en $\rm\LaTeX$ se puede crear nuevos comandos usando `\newcommand`, aunque esta es la forma nativa de existe otra forma de crear macros usando un comando heredado de $\rm\TeX$. Esto es posible usando el comando `\def`.
+Este comando tiene la siguiente estructura:
+
+
+<qx-ds-code>
+\def&LeftAngleBracket;expresión&RightAngleBracket;{expansión}
+</qx-ds-code>
+  
+
+La sintaxis es muy similar a `\newcommand`, la única diferencia como tal es en `&LeftAngleBracket;expresión&RightAngleBracket;`. En `\newcommand` esta parte estaba restringida a un comando de la forma `\comando` y la cantidad de parámetros se especifica en parámetros opcionales, pero en `\def` la situación cambia, ya que en `&LeftAngleBracket;expresión&RightAngleBracket;` hay que especificar explícitamente a los parámetros y cómo se delimitarán.
+
+  
+
+Consideremos para ello el siguiente ejemplo. Supongamos que se quiere hacer un macro llamado `\angparen` que coloque en paréntesis angulares (es decir “&LeftAngleBracket;” y “&RightAngleBracket;”) a una coordenada dada. Con `\newcommand` esto sería algo como:
+
+  
+<qx-ds-code>
+\newcommand{\angparen}[1]{\langle#1\rangle}
+</qx-ds-code>
+  
+
+Como ya sabemos esto hace que `$\angparen{1,2}$` se expanda como $\langle1,2\rangle$, aunque esto puede ser suficiente, tal vez a algunos les gustaría que los delimitadores se parezcan a los de la expansión, es decir que en vez de escribir `\angparen{1,2}` se escribiera `\angparen&lt;1,2&gt;`. Aunque con `\newcommand` esto no es posible, si lo es usando `\def`, el comando sería el siguiente:
+
+  
+<qx-ds-code>
+\def\angparen&lt;#1&gt;{\langle#1\rangle}
+</qx-ds-code>
+  
+
+Notemos que aquí `&LeftAngleBracket;expresión&RightAngleBracket;` es `\angparen&lt;#1&gt;`, este le dice a LaTeX que el comando `\angparen` va a tomar como entrada un parámetro, el cual será todo lo que este entre los caracteres “`&lt;`” y “`&gt;`”.
+
+
+<qx-example-table>
+Sea $\angparen&lt;1,2&gt;$ un vector en $\mathbb{R}^2\$.
+----------
+    Sea $\langle1,2\rangle$ un vector en $\mathbb{R}^2$.
+</qx-example-table>
+
+  
+
+Esta es la mayor ventaja de `\def`, que la sintaxis de entrada de los comandos no es fija, sino que es posible variarla bastante. Tomemos por ejemplo el siguiente comando:
+
+  
+<qx-ds-code>
+def\Teorema#1(#2).&nbsp;#3\par.{\textbf{Teorema #1} (#2). \textit{#3}\par\bigskip}
+</qx-ds-code>
+  
+
+Este comando toma como entrada tres parámetros, el primer parámetro será todo lo que se encuentre después de la declaración del comando hasta el primer “`(`” luego tenemos que el segundo parámetro, será todo lo que esté delimitado por “`(`” y la secuencia exacta de caracteres “`).&nbsp;`”. Notemos que esto también incluye al punto y el espacio, ya que en el caso de que no se encuentre la secuencia de caracteres escrita exactamente igual, es decir, que el punto o el espacio no se encuentren o haya un espacio entre el paréntesis y el punto como en “`\Teorema 1 (a)&nbsp;Este es el teorema 1`”, “`\Teorema 1 (a).Este es el teorema 1`” o “`\Teorema 1 (a)&nbsp;.&nbsp;Este es el teorema 1`” este ignorará a los “`)&nbsp;`”, “`).`” o “`)&nbsp;.&nbsp;`” y tratará de buscar al “`).&nbsp;`” hasta antes del siguiente salto de línea, en el caso que no lo encuentre este arrojará un error. Por eso es muy importante tener cuidado con la sintaxis dada en `&LeftAngleBracket;expresión&RightAngleBracket;` y cumplirla al pie de la letra. Por último, tenemos que el tercer parámetro sea todo lo que se encuentre desde el “`).&nbsp;`” hasta el primer `\par`, este comando es usado en cada salto de línea por lo que podemos entenderlo como que es todo lo que se encuentre después del
+“`).&nbsp;`” hasta antes de un salto de línea. A continuación mostraremos lo que
+resulta de aplicar el comando.
+
+
+<qx-example-table>
+\Teorema 5.5 (Pitágoras).&nbsp;En todo triangulo rectángulo $a^2 + b^2 = c^2$.
+
+El teorema anterior es el famoso teorema de Pitágoras.
+----------
+    <b>Teorema 5.5</b> (Pitágoras). <i>En todo triangulo rectángulo $a^2 + b^2 = c^2$.</i>
+    <br/><br/>
+    El teorema anterior es el famoso teorema de Pitágoras.
+<qx-example-table>
+  
+
+Ahora para concluir, aunque `\def` es bastante útil para definir notaciones no tradicionales de comandos, este tiene dos desventajas con respecto a `\newcommand`. La primera es que no permite parámetros opcionales y segundo es que es posible reescribir comandos ya existentes a diferencia de `\newcommand` que primero comprueba si el comando existe. De este modo lo más recomendable es no usar `\def` a menos que sea extremadamente necesario y estemos seguros que el nombre del comando no existe aun.
